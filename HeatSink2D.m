@@ -5,11 +5,11 @@ clc
 %============Inputs============
 
 %**System Paremeters**
-TDP = 100.0;           % Thermal Design Power, W
-NumFins = 5;           % Number of heat sink fins
+TDP = 125.0;           % Thermal Design Power, W
+NumFins = 10;           % Number of heat sink fins
 w = 8.0/100;           % Total length of domain parallel to flow direction, m
-L = 10.0/100;           % Total length of domain perpendicular flow direction (including L_CPU), m
-L_CPU = 2.0/100;       % Length of CPU
+L = 8.0/100;           % Total length of domain perpendicular flow direction (including L_CPU), m
+L_CPU = 0.0/100;       % Length of CPU
 thick = 0.4/100;       % Thickness of heat sink fin, m
 
 %**Material Parameters**
@@ -24,15 +24,15 @@ specific_heat_CPU = 895.;     % Specific heat of CPU, J/(kg*K)
 alpha_CPU = k_CPU/(density_CPU*specific_heat_CPU); % Thermal diffusivity of CPU, m^2/s
 
 %**Fluid Properties**
-Vel_air = 10.0;            % m/s (Set Vel_air=0 to use hbar, otherwise Vel_air is used to determine convective cooling coefficient)
-hbar = 15.0;              % Averaged convective cooling coeff., W/(m^2*K) (Not used unless Vel_air=0)
+Vel_air = 2.0;            % m/s (Set Vel_air=0 to use hbar, otherwise Vel_air is used to determine convective cooling coefficient)
+hbar = 10.0;              % Averaged convective cooling coeff., W/(m^2*K) (Not used unless Vel_air=0)
 Tinf = 300.0;             % Averaged air temperature, K
 
 %**Discretization Parameters**
 imax = 17;                % Number of nodes in x (normal to flow direction) 
 jmax = 17;                % Number of nodes in x (tangential to flow direction) 
 itermax = 2e7;            % Maximum allowable number of iterations
-convtol = 1.e-8;         % Iterative convergence tolerance (relative to fifth iteration)
+convtol = 1.e-10;         % Iterative convergence tolerance (relative to fifth iteration)
 
 %**Solution Variable**
 T = 350.*ones(imax,jmax); % Temperature of heat sink (initialized to 350 K), K
